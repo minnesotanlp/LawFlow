@@ -1,4 +1,6 @@
 data/human_exec_human_plan.json
 data/llm_exec_llm_plan.json
-data/llm_cot_exec_human_plan.json
+data/llm_cot_exec_human_plan_o1.json
+data/llm_cot_exec_human_plan_r1.json
+
 test.py

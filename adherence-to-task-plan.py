@@ -21,16 +21,12 @@ with open("data/llm_exec_llm_plan.json", "r") as f:
 
 ##### 1. Node Exec Rate
 ### 1.1 Human exec Human plan
-coverage_dict  = {node: 0 for node in human_plan_node_list}
-human_coverage_per_project = {i: coverage_dict.copy() for i in range (1, 11, 1)}
-
-for scenario_id, step_list in human_step_per_project.items():
-    for step in step_list: 
-        human_coverage_per_project[scenario_id][step] = 1
-
 human_coverage = []
-for _, coverage_store in human_coverage_per_project.items():
-    coverage = sum(list(coverage_store.values()))/len(coverage_store.items())
+for scenario_id, step_list in human_step_per_project.items():
+    coverage_dict  = {node: 0 for node in human_plan_node_list}
+    for step in step_list: 
+        coverage_dict[step] = 1
+    coverage = sum(list(coverage_dict.values()))/len(coverage_dict.items())
     human_coverage.append(coverage)
 human_mean = statistics.mean(human_coverage)
 human_stdev = statistics.stdev(human_coverage) 

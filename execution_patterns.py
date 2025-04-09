@@ -14,7 +14,7 @@ for rec in human_data:
         human_step_per_project[scenario_id].append(node)
 
 ### 0.2 LLM data
-with open("data/llm_cot_exec_human_plan.json", "r") as f:
+with open("data/llm_cot_exec_human_plan_o1.json", "r") as f:
     llm_step_per_project = json.load(f)
 
 ##### 1. Number of cycles 
@@ -103,7 +103,8 @@ llm_visit_count = []
 for scenario_id, step_list in llm_step_per_project.items():
     llm_visit_count_temp = visit_count_dict.copy()
     for step in step_list: 
-        llm_visit_count_temp[f"{human_plan_idx2title[step]}"] += 1
+        llm_visit_count_temp[step] += 1
+
     non_zero_values = [v for v in llm_visit_count_temp.values() if v != 0]
     visit_count = sum(non_zero_values)/len(non_zero_values)
     llm_visit_count.append(visit_count)
@@ -120,10 +121,11 @@ print(f"{'Visit Count for LLM CoT Execution Human Plan:':60} M = {llm_mean:.2f},
 human_subtask_transition = []
 for scenario_id, step_list in human_step_per_project.items():
     subtask_transition = 0
-    n = len(step_list)
-    for i in range(n-1):
-        if step_list[i][0] != step_list[i+1][0]:
+    temp = ""
+    for step in step_list:
+        if subtask_transition == 0 or step[0] != temp:
             subtask_transition += 1
+            temp = step[0]
     human_subtask_transition.append(subtask_transition)
 human_mean = statistics.mean(human_subtask_transition)
 human_stdev = statistics.stdev(human_subtask_transition) 
@@ -132,10 +134,11 @@ human_stdev = statistics.stdev(human_subtask_transition)
 llm_subtask_transition = []
 for scenario_id, step_list in llm_step_per_project.items():
     subtask_transition = 0
-    n = len(step_list)
-    for i in range(n-1):
-        if step_list[i][0] != step_list[i+1][0]:
+    temp = ""
+    for step in step_list:
+        if subtask_transition == 0 or step[0] != temp:
             subtask_transition += 1
+            temp = step[0]
     llm_subtask_transition.append(subtask_transition)
 
 llm_mean = statistics.mean(llm_subtask_transition)
@@ -163,7 +166,7 @@ llm_coverage = []
 for scenario_id, step_list in llm_step_per_project.items():
     coverage_dict  = {node: 0 for node in human_plan_node_list}
     for step in step_list: 
-        coverage_dict[human_plan_idx2title[step]] = 1
+        coverage_dict[step] = 1
     coverage = sum(list(coverage_dict.values()))/len(coverage_dict.items())
     llm_coverage.append(coverage)
 
