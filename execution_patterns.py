@@ -1,7 +1,7 @@
 import networkx as nx
 import json
 import statistics
-from helper import human_plan_node_list, human_plan_idx_title, human_plan_idx2title
+from helper import human_plan_node_list
 ##### 0. Process data
 ### 0.1 Human data
 with open("data/human_exec_human_plan.json", "r") as f:
@@ -37,11 +37,11 @@ for scenario_id, step_list in human_step_per_project.items():
     for curr_step, dict_store in transition_count.items():
         for next_step, val in dict_store.items():
             records.append((curr_step, next_step, val))
-    G_human = nx.DiGraph()
+    G = nx.DiGraph()
     for curr_step, next_step, val in records:
-        G_human.add_edge(curr_step, next_step, weight=val)
-        cycles = nx.simple_cycles(G_human, length_bound=6)
-        num_cycles = sum(1 for cycle in cycles if len(cycle) > 2)
+        G.add_edge(curr_step, next_step, weight=val)
+    cycles = nx.simple_cycles(G, length_bound=6)
+    num_cycles = sum(1 for cycle in cycles if len(cycle) > 2)
     human_cycle.append(num_cycles)
 
 human_mean = statistics.mean(human_cycle)
@@ -66,10 +66,10 @@ for scenario_id, step_list in llm_step_per_project.items():
     for curr_step, dict_store in transition_count.items():
         for next_step, val in dict_store.items():
             records.append((curr_step, next_step, val))
-    G_human = nx.DiGraph()
+    G = nx.DiGraph()
     for curr_step, next_step, val in records:
-        G_human.add_edge(curr_step, next_step, weight=val)
-        cycles = nx.simple_cycles(G_human, length_bound=6)
+        G.add_edge(curr_step, next_step, weight=val)
+        cycles = nx.simple_cycles(G, length_bound=6)
         num_cycles = sum(1 for cycle in cycles if len(cycle) > 2)
     llm_cycle.append(num_cycles)
 
