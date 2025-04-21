@@ -28,6 +28,6 @@ data_analysis
 └───diff-btw-human-and-llm-plans    # Table 1
 └───execution_patterns              # Table 2(b)
 └───human_llm_node_level_analysis   # Table 3
-└───meta_point.py
-└───tool_usage.py
+└───meta_point
+└───tool_usage
 ```
