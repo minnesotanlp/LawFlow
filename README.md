@@ -24,10 +24,10 @@ python3 <script_name>
 ```
 ```python
 data_analysis
-└───adherence-to-task-plan.py # Table 2(a)
-└───diff-btw-human-and-llm-plans.py # Table 1
-└───execution_patterns.py # Table 2(b)
-└───human_llm_node_level_analysis.py # Table 3
+└───adherence-to-task-plan          # Table 2(a)
+└───diff-btw-human-and-llm-plans    # Table 1
+└───execution_patterns              # Table 2(b)
+└───human_llm_node_level_analysis   # Table 3
 └───meta_point.py
 └───tool_usage.py
 ```
