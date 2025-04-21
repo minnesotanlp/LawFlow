@@ -11,9 +11,9 @@ pip install python-Levenshtein networkx
 ```
 3. Go to `https://huggingface.co/minnesotanlp/` and download the dataset
 
-4. Put the dataset under the `data` directory
+4. Put the dataset file under the `data` directory
 
-5. Run the `preprocess_data.py` script to get 3 files `human_exec_human_plan.json`,  `llm_cot_exec_human_plan_o1.json`, and `llm_cot_exec_human_plan_r1.json`
+5. Run the `preprocess_data.py` script 
 ```
 python3 proprocess_data.py
 ```
