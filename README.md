@@ -6,8 +6,8 @@ promise in supporting legal work, current datasets and models are narrowly focus
 
 ## About
 This branch contains following folders
-- `data_analysis`: scripts for performed data analysis in the paper
 - `modeling`: Notebooks for modelling and training models on our data
+- `data_analysis`: scripts for performed data analysis in the paper
 
 
 ## Modeling
@@ -28,6 +28,8 @@ This branch contains following folders
 
    b. Acquire a [HuggingFace API Key]([url](https://huggingface.co/)) and [Weights & Biases API Key]([url](https://wandb.ai)) (For monitoring the run, optional)
 
+5. Data used in the notebook can be obtained and processed from https://huggingface.co/datasets/minnesotanlp/lawflow-reasoning-simulation)
+
 ## Data Analysis
 1. Go to `data_analysis` directory.
 
@@ -36,7 +38,7 @@ This branch contains following folders
 ```
 pip install python-Levenshtein networkx
 ```
-3. Go to `https://huggingface.co/minnesotanlp/` and download the dataset.
+3. Go to this https://huggingface.co/datasets/minnesotanlp/lawflow-reasoning-simulation and download the dataset.
 
 4. Put the dataset file under the `data_analysis/data` directory.
 
