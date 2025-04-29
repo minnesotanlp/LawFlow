@@ -1,4 +1,4 @@
-# LawFlow: Collecting and Simulating Lawyers Thought Process
+# [LawFlow: Collecting and Simulating Lawyers Thought Process](https://arxiv.org/abs/2504.18942)
 
 ## Abstract
 Legal practitioners, particularly those early in their careers, face complex, high-stakes tasks that require adaptive, context-sensitive reasoning. While AI holds
@@ -67,6 +67,13 @@ data_analysis
 
 ## BibTex
 ```
-@misc{,
+@misc{das2025lawflowcollectingsimulating,
+      title={LawFlow : Collecting and Simulating Lawyers' Thought Processes}, 
+      author={Debarati Das and Khanh Chi Le and Ritik Sachin Parkar and Karin De Langis and Brendan Madson and Chad M. Berryman and Robin M. Willis and Daniel H. Moses and Brett McDonnell and Daniel Schwarcz and Dongyeop Kang},
+      year={2025},
+      eprint={2504.18942},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.18942}, 
 }
 ```
